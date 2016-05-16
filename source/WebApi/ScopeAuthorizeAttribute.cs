@@ -19,6 +19,11 @@ namespace Thinktecture.IdentityModel.WebApi
         string[] _scopes;
         static string _scopeClaimType = "scope";
 
+        public string[] Scopes
+        {
+            get { return _scopes;}
+        }
+
         public static string ScopeClaimType 
         {
             get { return _scopeClaimType; }
