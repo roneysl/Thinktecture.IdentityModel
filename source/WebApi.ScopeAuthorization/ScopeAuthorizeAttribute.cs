@@ -59,8 +59,7 @@ namespace Thinktecture.IdentityModel.WebApi
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
             HttpResponseMessage response;
-
-            if (actionContext.RequestContext.Principal.Identity.IsAuthenticated)
+            if (actionContext.RequestContext.Principal != null && actionContext.RequestContext.Principal.Identity.IsAuthenticated)
             {
                 response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Forbidden, "insufficient_scope");
                 response.Headers.Add("WWW-Authenticate", "Bearer error=\"insufficient_scope\"");
