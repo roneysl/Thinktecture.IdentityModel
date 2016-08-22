@@ -120,7 +120,7 @@ namespace Thinktecture.IdentityModel.WebApi.Authentication.Handler
         {
             handler = (from m in Mappings
                        where m.Options.RequestType == HttpRequestType.Header &&
-                             m.Options.Name == headerName
+                             m.Options.Name.ToLowerInvariant() == headerName.ToLowerInvariant()
                        select m.TokenHandler).SingleOrDefault();
 
             return (handler != null);
